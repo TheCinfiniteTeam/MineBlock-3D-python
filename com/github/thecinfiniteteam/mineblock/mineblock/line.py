@@ -1,5 +1,5 @@
 #encoding:utf-8
-import pygame,os,sys,easygui
+import pygame,os,sys,easygui,time
 from pygame import locals
 
 def init():
@@ -18,7 +18,7 @@ def window_event():
         if event.type == pygame.MOUSEBUTTONDOWN:
             # 判断是否是鼠标左键被按下
             if event.button == 1:
-                print("鼠标左键被点击")
+                print("Mouse Button 1 Down")
                 # 获取鼠标坐标位置
                 pos = pygame.mouse.get_pos()
                 mouseX = pos[0]
@@ -53,6 +53,11 @@ def window_DisplayFont(window_,text,r,g,b,x,y):
     font = pygame.font.Font("./fonts/def_HYBeiKeHeiW.ttf",16)
     window_text = font.render(text,True,(r,g,b))
     window_.blit(window_text,(x,y))
+def window_textclenr(window_,line,x,y):
+    if line == 1 :
+        window_display_img(window_,pygame.image.load("./images/terminal_line_15px.png"),x,y)
+    else:
+        window_display_img(window_,pygame.image.load("./images/terminal_line_15px_432px.png"),x,y)
 
 init()
 while True:
@@ -60,8 +65,15 @@ while True:
     window_display_img(window, pygame.image.load("./images/terminal_line.png"), 0, 0)
     window_display_img(window,pygame.image.load("./images/terminal_line_button.png"),432,432)
     window_DisplayFont(window,"[MineBlock](info) Loader Python Lib",255,255,255,10,0)
+    pygame.display.update()
+    time.sleep(1)
+    pygame.display.update()
     window_DisplayFont(window, "[MineBlock](info) Loader 3D", 255, 255, 255, 10, 15)
+    pygame.display.update()
+    time.sleep(3)
+    pygame.display.update()
     window_DisplayFont(window, "[MineBlock](info) Reg Api", 255, 255, 255, 10, 30)
+    pygame.display.update()
     #window_click(432, 432+72, 432, 432+72)
     window_event()
     pygame.display.update()
